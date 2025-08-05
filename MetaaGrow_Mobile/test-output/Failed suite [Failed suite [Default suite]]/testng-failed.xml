@@ -3,16 +3,18 @@
 <suite name="Failed suite [Failed suite [Failed suite [Default suite]]]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)(failed)(failed)">
     <classes>
-      <class name="Preventive_Maintenance.ArcadePMTest">
+      <class name="Tickets.RaiseTicket">
         <methods>
-          <include name="navigateBackUntilDashboard"/>
-          <include name="TwoQuestionWithRemarkAndMultiUserPerformTest_MT_02"/>
-          <include name="SuperBikePMTest_MT_04"/>
-          <include name="setUp"/>
+          <include name="beforeMethod"/>
+          <include name="beforeTest"/>
+          <include name="logTestResult"/>
+          <include name="RaiseTicketWithMandaoryFields_TKT_01"/>
+          <include name="RaiseTicketWithAllFields_TKT_02"/>
+          <include name="afterTest"/>
           <include name="tearDown"/>
-          <include name="login"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- Preventive_Maintenance.ArcadePMTest -->
+      </class> <!-- Tickets.RaiseTicket -->
     </classes>
   </test> <!-- Default test(failed)(failed)(failed) -->
 </suite> <!-- Failed suite [Failed suite [Failed suite [Default suite]]] -->

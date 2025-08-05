@@ -34,23 +34,31 @@ public class Maintenance {
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\\\"android:id/content\\\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.view.ViewGroup[4]")private WebElement FinishedTab;
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.ImageView")private WebElement PMCalender;
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Search\"]")private WebElement SearchBox;
+	                       
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Preventive Maintenance\"]")private WebElement PreventiveMaintenanceHeader;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Build, plan and schedule everything needed to keep your asset running smoothly.\"]")private WebElement BuildPlanandscheduleTest;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Maintenance\"]")private WebElement MaintenanceTitle;
-	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.ImageView")private WebElement AdhocPM;
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ImageView")private WebElement AdhocPM_PlusIcon;
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Yes\"])[1]")private WebElement YesResponsefirstChecklist;
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"No\"])[1]")private WebElement No_ResponseFirstChecklist;
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"NA\"])[3]")private WebElement NA_ResponseFirstChecklist;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\" Finish Maintenance\"]")private WebElement Finish_MaintenanceButton;
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")private WebElement ChecklistDropdown;
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.widget.ImageView")private WebElement BackButton;
-	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Enter here...\"]")private WebElement  RemarkField;
+	@AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'Enter here')]")private WebElement  RemarkField;
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.HorizontalScrollView/android.view.ViewGroup")private WebElement SelectUsersPerformingThisTaskDropdown;
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.ImageView")private WebElement ActionIconFirst;
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Search\"]")private WebElement SearchField_OnPM_AllTabs;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Save & Submit\"]")private WebElement SaveAndSubmitButton;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Save\"]")private WebElement SaveButton;
 	
 	
-	
+	public WebElement getSaveAndSubmitButton() {
+		return SaveAndSubmitButton;
+	}
+	public WebElement getSaveButton() {
+		return SaveButton;
+	}
 	//Getters Methods
 	public WebElement getScheduledTabOn_Dashboard() {
 		return ScheduledTabOn_Dashboard;
@@ -92,7 +100,7 @@ public class Maintenance {
 		return MaintenanceTitle;
 	}
 	public WebElement getAdhocPM() {
-		return AdhocPM;
+		return AdhocPM_PlusIcon;
 	}
 	public WebElement getYesResponsefirstChecklist() {
 		return YesResponsefirstChecklist;
@@ -208,9 +216,9 @@ public class Maintenance {
 		    Assert.fail("Test failed: " + e.getMessage());
 		}
 	}
-	public void clickon_AdhocPM()
+	public void clickon_AdhocPM_PlusIcon()
 	{
-		AdhocPM.click();
+		AdhocPM_PlusIcon.click();
 	}
 	public void ClickOn_YesResponsefirstChecklist()
 	{
@@ -277,6 +285,14 @@ public class Maintenance {
 	public void ClickOn_SearchField_OnPM_AllTabs(String Search_PM_Name)
 	{
 		SearchField_OnPM_AllTabs.sendKeys(Search_PM_Name);
+	}
+	public void CLickOn_SaveAndSubmitButton()
+	{
+		SaveAndSubmitButton.click();
+	}
+	public void ClickOn_SaveButton()
+	{
+		SaveButton.click();
 	}
 
 }

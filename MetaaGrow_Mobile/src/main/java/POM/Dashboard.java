@@ -24,13 +24,13 @@ public class Dashboard {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Hi Jaxon Brown! Welcome to Pixel Paradise \"]")private WebElement WelcomeText;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Here is your task for today.\"]")private WebElement HereisyourTaskText;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup")private WebElement InspectionScheduledTab;;
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Open Tickets\"]")private WebElement OpenTicketsTab;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Open Tickets']/ancestor::android.view.ViewGroup[1]")private WebElement OpenTicketsTab;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]")private WebElement ParkedTicketsTab;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\" Dashboard\"]")private WebElement DashboardText;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]")private WebElement MeterScheduled;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]")private WebElement MeterOverdue;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.view.ViewGroup")private WebElement PAT;
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Scheduled\"])[3]")private WebElement TPI;
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Scheduled\"])[4]")private WebElement TPI;
 	@AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Schedule, tab, 2 of 4\"]/android.view.ViewGroup/android.widget.ImageView")private WebElement InspectionBottomIcon;
 	@AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Overview, tab, 1 of 4\"]/android.view.ViewGroup")private WebElement HomeIconAtBottom;
 	@AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Ticket, tab, 3 of 4\"]/android.view.ViewGroup/android.widget.ImageView")private WebElement TicketsIconAtBottom;
@@ -51,8 +51,11 @@ public class Dashboard {
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.ImageView")private WebElement AdhocPM;
 //	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup/android.widget.ImageView")private  WebElement MenuhamburgerIcon;
 //	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Change Property\"]")private WebElement ChangePropertyText;
-//	@AndroidFindBy
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]")private WebElement LogoutIcon_OnHome;
 	
+	public WebElement getLogoutIcon_OnHome() {
+		return LogoutIcon_OnHome;
+	}
 	public WebElement getScheduledPM() {
 		return ScheduledPM;
 	}
@@ -322,6 +325,10 @@ public class Dashboard {
 	public void ClickOn_AdhocPM()
 	{
 		AdhocPM.click();
+	}
+	public void clickOn_LogoutIcon_OnHome()
+	{
+		LogoutIcon_OnHome.click();
 	}
 	
 	

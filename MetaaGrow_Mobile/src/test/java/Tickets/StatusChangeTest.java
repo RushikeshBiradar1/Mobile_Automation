@@ -11,11 +11,12 @@ import org.testng.annotations.Test;
 import com.google.gson.annotations.Until;
 
 import General_Utility.B2;
+import General_Utility.BASETEST;
 import General_Utility.BaseClass;
 import POM.Dashboard;
 import POM.Tickets;
 
-public class StatusChangeTest extends B2{
+public class StatusChangeTest extends BASETEST{
 
 	
 	
@@ -35,11 +36,7 @@ public class StatusChangeTest extends B2{
 		wait.until(ExpectedConditions.elementToBeClickable(tkt.getFirstTicket()));
 		tkt.CLickOn_FirstTicket();
 
-		// Wait for the Open Ticket Title to be visible and fetch the text
-		WebElement OpenTicktTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//android.widget.TextView)[4]")));
-		String OpenTicketText = OpenTicktTitle.getText();
-		System.out.println("Open Ticket Title: " + OpenTicketText);
-
+	
 		// Click on the Open Ticket Status Dropdown
 		tkt.CLickOn_OpenTicketStatusDropdown();
 		wait.until(ExpectedConditions.elementToBeClickable(tkt.getOpenTicketDropdown()));
@@ -51,10 +48,25 @@ public class StatusChangeTest extends B2{
 		tkt.ClickOn_SubmitButton();
 		tkt.ClickOn_YesButton_OnChangeStatusPopup();
 
-Thread.sleep(2000);
-		
-		db.ClickOn_HomeIconAtBottom();
-		
+
+		try {
+			// ✅ Wait briefly for the toast message
+			WebDriverWait toastWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+			WebElement toastMessage = toastWait.until(ExpectedConditions.presenceOfElementLocated(
+					By.xpath("//android.widget.Toast | //android.widget.TextView[contains(@text, 'Ticket Status changed successfully')]")
+					));
+
+			String message = toastMessage.getText();
+			System.out.println("Toast message displayed: " + message);
+
+			Assert.assertTrue(message.contains("Ticket Status changed successfully"), "Expected toast message not found!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Exception occurred in test: " + e.getMessage());
+		}
+
+	
 		
 		//Verify Ticket Is parked (This feature is currently not working because parked ticket is going at bottom randomly
 
@@ -121,11 +133,28 @@ Thread.sleep(2000);
 		tkt.CLickOn_AddRemarkField("Ticket is Closed");
 		tkt.ClickOn_SubmitButton();
 		tkt.ClickOn_YesButton_OnChangeStatusPopup();
-		db.ClickOn_HomeIconAtBottom();
+		
+		try {
+			// ✅ Wait briefly for the toast message
+			WebDriverWait toastWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+			WebElement toastMessage = toastWait.until(ExpectedConditions.presenceOfElementLocated(
+					By.xpath("//android.widget.Toast | //android.widget.TextView[contains(@text, 'Ticket Status changed successfully')]")
+					));
+
+			String message = toastMessage.getText();
+			System.out.println("Toast message displayed: " + message);
+
+			Assert.assertTrue(message.contains("Ticket Status changed successfully"), "Expected toast message not found!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Exception occurred in test: " + e.getMessage());
+		}
+
 	}
 	
 	@Test(priority = 3)
-	public void NotValidTicketStatusChangeTest_TKT_07()
+	public void NotValidTicketStatusChangeTest_TKT_07() throws Throwable
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		Dashboard db = new Dashboard(driver);
@@ -136,16 +165,49 @@ Thread.sleep(2000);
 		
 		db.CLickOn_OpenTicketsTab();
 		Tickets tkt = new Tickets(driver);
+	
+		
 		tkt.CLickOn_FirstTicket();
 		tkt.CLickOn_OpenTicketStatusDropdown();
+
 		
-		wait.until(ExpectedConditions.elementToBeClickable(tkt.getOpenTicketDropdown()));
-		tkt.ClickOn_OpenTicketDropdown();
+		// Wait for the "Open Ticket Dropdown" element to be clickable
+		WebElement openTicketDropdown = wait.until(
+		    ExpectedConditions.elementToBeClickable(tkt.getOpenTicketDropdown()));
+
+		Thread.sleep(1000);
+		// Click the "Open Ticket Dropdown" element
+		openTicketDropdown.click();
+		
+		
 		tkt.CLickOn_SelectNotValidStatus();
+		
+		
 		tkt.CLickOn_AddRemarkField("Ticket is Not valid");
 		tkt.ClickOn_SubmitButton();
 		tkt.ClickOn_YesButton_OnChangeStatusPopup();
 		System.out.println("Ticket Status Has been changes successfully Not Valid");
+		
+		// Wait briefly for popup (if expected to be slow)
+					Thread.sleep(1000); // Optional: adjust if necessary
+try {
+					// ✅ Wait briefly for the toast message
+					WebDriverWait toastWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+					WebElement toastMessage = toastWait.until(ExpectedConditions.presenceOfElementLocated(
+							By.xpath("//android.widget.Toast | //android.widget.TextView[contains(@text, 'Ticket Status changed successfully')]")
+							));
+
+					String message = toastMessage.getText();
+					System.out.println("Toast message displayed: " + message);
+
+					Assert.assertTrue(message.contains("Ticket Status changed successfully"), "Expected toast message not found!");
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					Assert.fail("Exception occurred in test: " + e.getMessage());
+				}
+		
+		
 	}
 	
 	@Test(enabled=false)

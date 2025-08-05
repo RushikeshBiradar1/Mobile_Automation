@@ -71,11 +71,13 @@ public class Tickets {
 		@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup")private WebElement TicketStatusDropdown;
 		@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Closed\"]")private WebElement SelectClosedStatus;
 		@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Parked\"]")private WebElement SelectParkedStatus;
-		@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Not Valid\"]")private WebElement SelectNotValidStatus;
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Not valid\"]")private WebElement SelectNotValidStatus;
 
 		public WebElement getSelectNotValidStatus() {
 			return SelectNotValidStatus;
 		}
+
+		@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.widget.ImageView")private WebElement PlusIcon_Raisetkt_OnTktListing;
 
 		@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Submit\"]")private WebElement SubmitButton;
 		@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Cancel\"]")private WebElement CancelButton;
@@ -105,6 +107,9 @@ public class Tickets {
 		}
 		public WebElement getRaiseTicketButton_OnRaiseTicketPage() {
 			return RaiseTicketButton_OnRaiseTicketPage;
+		}
+		public WebElement getPlusIcon_Raisetkt_OnTktListing() {
+			return PlusIcon_Raisetkt_OnTktListing;
 		}
 		public WebElement getYesButton_OnChangeStatusPopup() {
 			return YesButton_OnChangeStatusPopup;
@@ -449,8 +454,10 @@ public class Tickets {
 		{
 			TicketStatusDropdownIcon_OnListingPage.click();
 		}
-		
-		
+		public void ClickOn_PlusIcon_Raisetkt_OnTktListing()
+		{
+			PlusIcon_Raisetkt_OnTktListing.click();
+		}
 		
 		
 		

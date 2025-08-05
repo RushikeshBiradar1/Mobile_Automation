@@ -1,6 +1,7 @@
 package Tickets;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,13 +11,14 @@ import org.testng.annotations.Test;
 
 import General_Utility.B1;
 import General_Utility.B2;
+import General_Utility.BASETEST;
 import General_Utility.BaseClass;
 import General_Utility.Java_RandomNumber;
 import POM.Dashboard;
 import POM.Tickets;
 import io.appium.java_client.MobileBy;
 
-public class Edit_TicketTest extends B2{
+public class Edit_TicketTest extends BASETEST{
 
 
 
@@ -55,38 +57,61 @@ public class Edit_TicketTest extends B2{
 		tkt.ClickOn_SelectBreakdownType();
 
 		//Click On Submit Button
-		tkt.ClickOn_SubmitButton();
+		wait.until(ExpectedConditions.elementToBeClickable(tkt.getSubmitButton())).click();
+//		tkt.ClickOn_SubmitButton();
 		tkt.ClickOn_YesButton_OnChangeStatusPopup();
 
 
 	}
 
-	@Test(priority = 2)
+	@Test(dependsOnMethods = "Edit_TicketToBreakdownTest_TKT_08")
 	public void Edit_TicketToGeneralTest_TKT_09()
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		Dashboard db = new Dashboard(driver);
-
+		Tickets tkt = new Tickets(driver);
 		// Wait for the Open Tickets Tab to be clickable
 		wait.until(ExpectedConditions.elementToBeClickable(db.getOpenTicketsTab()));
 		// Now call the method to click on the Open Tickets Tab
 		db.CLickOn_OpenTicketsTab();
 
-		// Define the UI Automator scroll command to scroll to a specific element
-		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"ADULT BUMPER CAR NF\"))";
+//		tkt.ClickOn_SearchField_OnTicketListing("ADULT BUMPER");
+//		// Define the UI Automator scroll command to scroll to a specific element
+//		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"ADULT BUMPER\"))";
+//
+//		// Use MobileBy to find the element with androidUIAutomator
+//		WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
+//
+//		// Optional: Wait for the element to be visible
+//		//				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.visibilityOf(targetElement));
+//
+//		// Now you can interact with the element
+//		targetElement.click(); // For example, clicking the target element
+		
+		
+		
+		
+		// Scroll to the element containing "ADULT BUMPER"
+		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true))"
+		                    + ".scrollIntoView(new UiSelector().textContains(\"ADULT BUMPER\"))";
 
-		// Use MobileBy to find the element with androidUIAutomator
-		WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
+		driver.findElement(MobileBy.AndroidUIAutomator(uiScrollable));
 
-		// Optional: Wait for the element to be visible
-		//				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(targetElement));
+		// Now find all matching elements
+		List<WebElement> matchingElements = driver.findElements(
+		    MobileBy.xpath("//android.widget.TextView[contains(@text, 'ADULT BUMPER')]")
+		);
 
-		// Now you can interact with the element
-		targetElement.click(); // For example, clicking the target element
+		// Wait for visibility of the first one (optional but recommended)
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(matchingElements.get(0)));
+
+		// Click on the first visible matching element
+		matchingElements.get(0).click();
 
 		// Wait for the first ticket to be clickable and click on it
-		Tickets tkt = new Tickets(driver);
+		
 		wait.until(ExpectedConditions.elementToBeClickable(tkt.getFirstTicket()));
 		tkt.CLickOn_FirstTicket();
 
@@ -97,7 +122,8 @@ public class Edit_TicketTest extends B2{
 	
 
 		//Click On Submit Button
-		tkt.ClickOn_SubmitButton();
+		wait.until(ExpectedConditions.elementToBeClickable(tkt.getSubmitButton())).click();
+//		tkt.ClickOn_SubmitButton();
 		tkt.ClickOn_YesButton_OnChangeStatusPopup();
 
 
@@ -120,7 +146,7 @@ public class Edit_TicketTest extends B2{
 				tkt.CLickOn_FirstTicket();
 				
 		// Define the UI Automator scroll command to scroll to a specific element
-		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"Reply\"))";
+		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"Submit\"))";
 
 		// Use MobileBy to find the element with androidUIAutomator
 		WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
@@ -172,7 +198,7 @@ public class Edit_TicketTest extends B2{
 	}
 	
 	@Test(priority = 4)
-	public void ReplyTicketWithAttachImagesTest_TKT_11()
+	public void ReplyTicketWithAttachImagesTest_TKT_11() throws InterruptedException
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		Dashboard db = new Dashboard(driver);
@@ -188,7 +214,7 @@ public class Edit_TicketTest extends B2{
 				tkt.CLickOn_FirstTicket();
 				
 		// Define the UI Automator scroll command to scroll to a specific element
-		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"Reply\"))";
+		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"Submit\"))";
 
 		// Use MobileBy to find the element with androidUIAutomator
 		WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
@@ -247,12 +273,15 @@ public class Edit_TicketTest extends B2{
 //			wait.until(ExpectedConditions.visibilityOf(AttachImagesText1));
 			
 		    // Click on the shutter button to take a photo
-		    WebElement shutterButton = driver.findElement(By.id("com.android.camera2:id/shutter_button"));
-		    shutterButton.click();
+		    WebElement shutterButton = wait.until(ExpectedConditions.elementToBeClickable(
+		            By.xpath("//android.widget.ImageView[@content-desc=\"Shutter\"]")));
+		            Thread.sleep(1000);
+		            shutterButton.click();
 
 		    // Click the 'Done' button after the photo is taken
-		    WebElement doneButton = driver.findElement(By.id("com.android.camera2:id/done_button"));
-		    doneButton.click();
+		            WebElement doneButton = wait.until(ExpectedConditions.elementToBeClickable(
+		                    By.xpath("//android.widget.ImageButton[@content-desc=\"Done\"]")));
+		                    doneButton.click();
 
 		    // Click the photos media popup only once
 		    if (!photosmediapopup) {

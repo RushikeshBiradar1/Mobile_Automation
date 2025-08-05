@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -12,6 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import General_Utility.B2;
+import General_Utility.BASETEST;
 import General_Utility.BaseClass;
 import General_Utility.Java_RandomNumber;
 import POM.Dashboard;
@@ -24,7 +26,7 @@ public class RaiseTicket extends B2{
 	public void RaiseTicketWithMandaoryFields_TKT_01() throws Throwable
 	{
 		Dashboard db = new Dashboard(driver);
-		db.ClickOn_HomeIconAtBottom();
+//		db.ClickOn_HomeIconAtBottom();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //		Dashboard db = new Dashboard(driver);
 		// Wait for the Open Tickets Tab to be clickable
@@ -35,7 +37,7 @@ public class RaiseTicket extends B2{
 		db.CLickOn_OpenTicketsTab();
 		Tickets tkt = new Tickets(driver);
 		
-		tkt.ClickOn_RaiseTicketBUtton();
+		  wait.until(ExpectedConditions.elementToBeClickable(tkt.getPlusIcon_Raisetkt_OnTktListing())) .click();
 		tkt.ClickOn_AllowMetaagrowTORecordAudio_WhileUsingApp_Popup();
 		tkt.ClickOn_AllowPhotoAndMediaButton();
 		Thread.sleep(5000);
@@ -63,8 +65,12 @@ public class RaiseTicket extends B2{
 		driver.findElement(By.xpath("//android.widget.TextView[@text=\"Fernandes\"]")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup/android.widget.ImageView"))).click();
 
+		//click on priority dropdown icon
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[7]/android.view.ViewGroup/android.widget.ImageView"))).click();
+
 		//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup/android.widget.ImageView
-		tkt.CLickoN_MediumTicket();
+	wait.until(ExpectedConditions.elementToBeClickable(tkt.getMediumTicket())).click();
+
 		tkt.CLickOn_RaiseTicketButton_OnRaiseTicketPage();
 		wait.until(ExpectedConditions.elementToBeClickable(tkt.getRaisedTab()));
 		tkt.ClickOn_RaisedTab();
@@ -79,7 +85,7 @@ public class RaiseTicket extends B2{
 		    System.out.println("Test Passed: Ticket with title '" + TicketTitle + "' is displayed in the listing.");
 		}
 		
-			db.ClickOn_HomeIconAtBottom();
+		
 		
 		
 	}
@@ -87,7 +93,7 @@ public class RaiseTicket extends B2{
 	@Test(priority = 2)
 	public void RaiseTicketWithAllFields_TKT_02() throws Throwable {
 	    Dashboard db = new Dashboard(driver);
-	    db.ClickOn_HomeIconAtBottom();
+
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 	    // Wait for the Open Tickets Tab to be clickable
@@ -99,8 +105,9 @@ public class RaiseTicket extends B2{
 	    Tickets tkt = new Tickets(driver);
 
 	    // Raise Ticket button click
-	    tkt.ClickOn_RaiseTicketBUtton();
-
+//	    tkt.ClickOn_RaiseTicketBUtton();
+	   wait.until(ExpectedConditions.elementToBeClickable(tkt.getPlusIcon_Raisetkt_OnTktListing())) .click();
+//	    tkt.ClickOn_PlusIcon_Raisetkt_OnTktListing();
 	    // Handle pop-ups conditionally
 	    try {
 	        // Handle "Allow Metaagrow to record audio" pop-up if it appears
@@ -140,7 +147,10 @@ public class RaiseTicket extends B2{
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.HorizontalScrollView/android.view.ViewGroup"))).click();
 
 	    // Select Users from the dropdown
-	    tkt.CLickOn_SelectUsersDropdown();
+	wait.until(ExpectedConditions.elementToBeClickable(tkt.getSelectUsersDropdown())).click();  
+	//tkt.CLickOn_SelectUsersDropdown();
+//	    driver.findElement(By.xpath("//android.widget.TextView[@text=\"Select Users\"]")).click();
+
 	    driver.findElement(By.xpath("//android.widget.TextView[@text=\"Mayur\"]")).click();
 	    driver.findElement(By.xpath("//android.widget.TextView[@text=\"Fernandes\"]")).click();
 	    
@@ -148,11 +158,16 @@ public class RaiseTicket extends B2{
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup/android.widget.ImageView"))).click();
 	    
 	    // Select Asset
-	    tkt.CLickOn_AssetDropdownOn_RaiseTicket();
+	  wait.until(ExpectedConditions.elementToBeClickable(tkt.getAssetDropdownOn_RaiseTicket())).click();
+//	  tkt.CLickOn_AssetDropdownOn_RaiseTicket();
 	    tkt.CLickON_ADULT_BUMPER_CAR_NF_AssetName();
 
 	    // Select Medium Ticket type
-	    tkt.CLickoN_MediumTicket();
+	  //click on priority dropdown icon
+	  		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[7]/android.view.ViewGroup/android.widget.ImageView"))).click();
+
+	  		//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[5]/android.view.ViewGroup/android.widget.ImageView
+	  	wait.until(ExpectedConditions.elementToBeClickable(tkt.getMediumTicket())).click();
 
 	    // Provide Description for the ticket
 	    tkt.CLickon_DescriptionBox_OnRaiseTicket("We have encountered an issue with the switchboard located at line '" + ran + "' in the electrical system.");
@@ -181,14 +196,15 @@ public class RaiseTicket extends B2{
 	        }
 
 	        // Click on the shutter button to take a photo
-	        WebElement shutterButton = driver.findElement(By.id("com.android.camera2:id/shutter_button"));
-	        wait.until(ExpectedConditions.elementToBeClickable(shutterButton));
-	        shutterButton.click();
+		    WebElement shutterButton = wait.until(ExpectedConditions.elementToBeClickable(
+		            By.xpath("//android.widget.ImageView[@content-desc=\"Shutter\"]")));
+		            Thread.sleep(1000);
+		            shutterButton.click();
 
-	        // Click the 'Done' button after the photo is taken
-	        WebElement doneButton = driver.findElement(By.id("com.android.camera2:id/done_button"));
-	        wait.until(ExpectedConditions.elementToBeClickable(doneButton));
-	        doneButton.click();
+		    // Click the 'Done' button after the photo is taken
+		            WebElement doneButton = wait.until(ExpectedConditions.elementToBeClickable(
+		                    By.xpath("//android.widget.ImageButton[@content-desc=\"Done\"]")));
+		                    doneButton.click();
 
 	        // Click 'Save' to save the photo
 	        WebElement saveButton = driver.findElement(By.xpath("//android.widget.TextView[@text='Save']"));
@@ -330,5 +346,150 @@ public class RaiseTicket extends B2{
 //		    System.out.println("Test Passed: Ticket with title '" + TicketTitle + "' is displayed in the listing.");
 //		}
 //	}
+	
+	
+	@Test()
+	public void SearchAssigned_TicketByTKT_No() throws Throwable {
+	    Dashboard db = new Dashboard(driver);
+//	    db.ClickOn_HomeIconAtBottom();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    // Wait for the Open Tickets Tab to be clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(db.getOpenTicketsTab())); // Assuming you have a method to get the element
+
+	    // Now call the method to click on the Open Tickets Tab
+	    db.CLickOn_OpenTicketsTab();
+
+	    Tickets tkt = new Tickets(driver);
+	    Thread.sleep(1000);
+	 // Click to focus the search box before sending text
+	 		WebElement searchBox = (tkt.getSearchField_OnTicketListing());
+	 		searchBox.click();
+	 		searchBox.clear();
+	 		searchBox.sendKeys("0094");
+
+	 		// Optionally hide keyboard (sometimes helps)
+	 		try {
+	 			driver.hideKeyboard();
+	 		} catch (Exception e) {
+	 			// Keyboard might already be hidden, ignore
+	 		}
+
+		// Define the locator for "0096"
+		By resultLocator = By.xpath("//android.widget.TextView[contains(@text, '0094')]");
+
+		try {
+		    // Wait for it to become visible
+		    WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+		    
+		  
+		    // Verify it's displayed
+		    Assert.assertTrue(result.isDisplayed(), "Ticket No - 0094' is displayed");
+		    System.out.println("Ticket No - 0094' is displayed ");
+
+		} catch (TimeoutException e) {
+		    // Fail the test if not found
+		    Assert.fail("Ticket No - 0094' not found on Assigned Listing Page.");
+		}
+		driver.findElement(By.xpath(".//android.widget.ImageView")).click();
+	}
+	
+	
+	@Test()
+	public void SearchRaised_TicketByTKT_No() throws Throwable {
+	    Dashboard db = new Dashboard(driver);
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    // Wait for the Open Tickets Tab to be clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(db.getOpenTicketsTab())); // Assuming you have a method to get the element
+
+	    // Now call the method to click on the Open Tickets Tab
+	    db.CLickOn_OpenTicketsTab();
+
+	    Tickets tkt = new Tickets(driver);
+	    Thread.sleep(1000);
+	    
+	    tkt.ClickOn_RaisedTab();
+	    
+	 // Click to focus the search box before sending text
+	 		WebElement searchBox = (tkt.getSearchField_OnTicketListing());
+	 		searchBox.click();
+	 		searchBox.clear();
+	 		searchBox.sendKeys("0094");
+
+	 		// Optionally hide keyboard (sometimes helps)
+	 		try {
+	 			driver.hideKeyboard();
+	 		} catch (Exception e) {
+	 			// Keyboard might already be hidden, ignore
+	 		}
+
+		// Define the locator for "0096"
+		By resultLocator = By.xpath("//android.widget.TextView[contains(@text, '0094')]");
+
+		try {
+		    // Wait for it to become visible
+		    WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+		    
+		  
+		    // Verify it's displayed
+		    Assert.assertTrue(result.isDisplayed(), "Ticket No - 0094' is displayed");
+		    System.out.println("Ticket No - 0094' is displayed ");
+
+		} catch (TimeoutException e) {
+		    // Fail the test if not found
+		    Assert.fail("Ticket No - 0094' not found on Assigned Listing Page.");
+		}
+		driver.findElement(By.xpath(".//android.widget.ImageView")).click();
+	}
+	
+	
+	
+	
+
+	    @Test(priority = 1)
+		public void VerifyTicketDeatils() throws Throwable
+		{
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+			Dashboard db = new Dashboard(driver);
+
+			// Wait for the Open Tickets Tab to be clickable
+			wait.until(ExpectedConditions.elementToBeClickable(db.getOpenTicketsTab()));
+			// Now call the method to click on the Open Tickets Tab
+			db.CLickOn_OpenTicketsTab();
+
+			// Wait for the first ticket to be clickable and click on it
+			Tickets tkt = new Tickets(driver);
+			wait.until(ExpectedConditions.elementToBeClickable(tkt.getFirstTicket()));
+			tkt.CLickOn_FirstTicket();
+
+			boolean isAllDisplayed = true;
+
+			try {
+			    WebElement title = driver.findElement(By.xpath("//android.widget.TextView[@text='Title']"));
+			    WebElement ticketTitle = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Scoreboard')]"));
+			    WebElement description = driver.findElement(By.xpath("//android.widget.TextView[@text='Description']"));
+			    WebElement raisedBy = driver.findElement(By.xpath("//android.widget.TextView[@text='Raised by']"));
+
+			    if (!title.isDisplayed() || !ticketTitle.isDisplayed() || !description.isDisplayed() || !raisedBy.isDisplayed()) {
+			        isAllDisplayed = false;
+			    }
+
+			} catch (Exception e) {
+			    // If any element is not found, treat it as failed
+			    isAllDisplayed = false;
+			}
+
+			// Final test result
+			if (isAllDisplayed) {
+			    System.out.println("✅ Test Passed: All ticket detail headers are displayed.");
+			} else {
+			    System.out.println("❌ Test Failed: One or more ticket detail headers are missing.");
+			}
+	    
+	    
+	}
+	
 
 }

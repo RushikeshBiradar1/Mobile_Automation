@@ -81,6 +81,33 @@ public class WebDriver_Utility {
         
         // Return the path of the saved screenshot
         return destination;
+    	
+//    	 if (driver == null) {
+//    	        System.out.println("❌ Cannot take screenshot: WebDriver is null.");
+//    	        return null;
+//    	    }
+//
+//    	    // Get the current date and time to append to the screenshot name
+//    	    String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//    	    String finalScreenshotName = screenshotName + "_" + timestamp + ".png";
+//    	    
+//    	    try {
+//    	        TakesScreenshot ts = (TakesScreenshot) driver;
+//    	        File source = ts.getScreenshotAs(OutputType.FILE);
+//    	        
+//    	        // Specify the destination for the screenshot
+//    	        String destination = ".\\Screenshots\\" + finalScreenshotName;
+//    	        File finalDestination = new File(destination);
+//    	        
+//    	        // Copy the screenshot to the destination
+//    	        FileUtils.copyFile(source, finalDestination);
+//    	        
+//    	        System.out.println("✅ Screenshot saved at: " + destination);
+//    	        return destination;
+//    	    } catch (Exception e) {
+//    	        System.out.println("❌ Screenshot failed: " + e.getMessage());
+//    	        return null;
+//    	    }
     }
 
 	

@@ -3,19 +3,60 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Inspection.InspectionTest">
+      <class name="Tickets.AssignTicket">
         <methods>
-          <include name="beforeMethod"/>
-          <include name="TwoQuestionInspectionwithRemarkandUserTest_TC_I02"/>
-          <include name="logTestResult"/>
+          <include name="setUp"/>
           <include name="beforeTest"/>
-          <include name="Daily_Scoreboard_InspectionTest_TC_I04"/>
+          <include name="AssigTicketWIthAllFiledsAnd3Images_TKT_04"/>
+          <include name="AssignTicketTest_TKT_03"/>
           <include name="afterTest"/>
           <include name="tearDown"/>
-          <include name="VR_HeadsetInspectionTest_TC_I03"/>
-          <include name="setUp"/>
+          <include name="beforeMethod"/>
+          <include name="logTestResult"/>
         </methods>
-      </class> <!-- Inspection.InspectionTest -->
+      </class> <!-- Tickets.AssignTicket -->
+      <class name="Tickets.RaiseTicket">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="setUp"/>
+          <include name="VerifyTicketDeatils"/>
+          <include name="RaiseTicketWithMandaoryFields_TKT_01"/>
+          <include name="afterTest"/>
+          <include name="RaiseTicketWithAllFields_TKT_02"/>
+          <include name="tearDown"/>
+          <include name="SearchRaised_TicketByTKT_No"/>
+          <include name="SearchAssigned_TicketByTKT_No"/>
+          <include name="beforeMethod"/>
+          <include name="logTestResult"/>
+        </methods>
+      </class> <!-- Tickets.RaiseTicket -->
+      <class name="Tickets.Edit_TicketTest">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="setUp"/>
+          <include name="ReplyTicketWithAttachImagesTest_TKT_11"/>
+          <include name="afterTest"/>
+          <include name="Edit_TicketToBreakdownTest_TKT_08"/>
+          <include name="ReplyTicketTest_TKT_10"/>
+          <include name="tearDown"/>
+          <include name="beforeMethod"/>
+          <include name="logTestResult"/>
+          <include name="Edit_TicketToGeneralTest_TKT_09"/>
+        </methods>
+      </class> <!-- Tickets.Edit_TicketTest -->
+      <class name="Tickets.StatusChangeTest">
+        <methods>
+          <include name="ParkedStatusTest_TKT_05"/>
+          <include name="setUp"/>
+          <include name="beforeTest"/>
+          <include name="ClosedTicketStatusChangeTest_TKT_06"/>
+          <include name="NotValidTicketStatusChangeTest_TKT_07"/>
+          <include name="afterTest"/>
+          <include name="tearDown"/>
+          <include name="beforeMethod"/>
+          <include name="logTestResult"/>
+        </methods>
+      </class> <!-- Tickets.StatusChangeTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

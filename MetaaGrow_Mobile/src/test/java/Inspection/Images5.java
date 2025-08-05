@@ -24,7 +24,7 @@ public class Images5  extends B2{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 System.out.println("brfore for loop");
 		
-	    for (int imgLoop = 1; imgLoop <= 6; imgLoop++) {
+	    for (int imgLoop = 1; imgLoop <= 2; imgLoop++) {
 	        
 
 

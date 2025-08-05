@@ -23,7 +23,7 @@ import io.appium.java_client.MobileBy;
 public class AttachImagesTest extends B2 {
 
 		  @Test(priority = 1)
-		    public void Fire_and_Electrical_SixAttachImageTest_TC_I04() throws Throwable {
+		    public void TC_I05_Fire_and_Electrical_SixAttachImageTest_TC_I05() throws Throwable {
 
 			  Dashboard db = new Dashboard(driver);
 			  Thread.sleep(2000);
@@ -163,7 +163,7 @@ public class AttachImagesTest extends B2 {
 		  }
 		  
 		  @Test(priority = 2)
-		  public void Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02() throws Throwable
+		  public void TC_I06_Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest() throws Throwable
 		  {
 		  
 			  Dashboard db = new Dashboard(driver);
@@ -188,16 +188,16 @@ public class AttachImagesTest extends B2 {
 			    wait.until(ExpectedConditions.visibilityOf(targetElement));
 			    targetElement.click();
 			    
-   	        String actionButtonXPath3 = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView";
-
+   	        String actionButtonXPath3 = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.ImageView";
+   	                                    //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.ImageView
       	      WebElement actionButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(actionButtonXPath3)));
       	    actionButton.click();
 
       	      
       	    inspection.ClickOn_RaiseTicketButton_OnActionPopup();
       	  Tickets tkt = new Tickets(driver);
-      		tkt.ClickOn_AllowMetaagrowTORecordAudio_WhileUsingApp_Popup();
-    		tkt.ClickOn_AllowPhotoAndMediaButton();
+//      		tkt.ClickOn_AllowMetaagrowTORecordAudio_WhileUsingApp_Popup();
+//    		tkt.ClickOn_AllowPhotoAndMediaButton();
     		Thread.sleep(3000);
     		tkt.ClickOn_SelectTypeDropdown();
     		tkt.CLickOn_SelectGeneralTyep();
@@ -228,7 +228,8 @@ public class AttachImagesTest extends B2 {
     		tkt.CLickoN_MediumTicket();
     		tkt.CLickOn_RaiseTicketButton_OnRaiseTicketPage();
     	
-      	    
+    		
+    		
       	      
 			Random random = new Random();
 			int totalQuestions = 15;
@@ -301,18 +302,20 @@ public class AttachImagesTest extends B2 {
 					break;
 				}
 			}
+			
+    		
 			Thread.sleep(1000);
     		
-    		 String actionButtonXPath12 = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[12]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView";
-                                           
-     	      WebElement actionButton12 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(actionButtonXPath12)));
-     	    actionButton12.click();
-     	    inspection.ClickON_AddRemarkButton_OnActionPopup();
-     	 
-     	  inspection.ClickOn_EnterRemarkOn_Inspection("Added Remark Check");
-     	  inspection.ClickOn_SubmitButton_OnRemark();
-    		
-    		
+	   		 String actionButtonXPath12 = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.ImageView";
+	                                          
+	    	      WebElement actionButton12 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(actionButtonXPath12)));
+	    	    actionButton12.click();
+	    	    inspection.ClickON_AddRemarkButton_OnActionPopup();
+	    	 
+	    	  inspection.ClickOn_EnterRemarkOn_Inspection("Added Remark Check");
+	    	  inspection.ClickOn_SubmitButton_OnRemark();
+	    		
+	    	  System.out.println("Remark added successfully");
     		
 
 			System.out.println("All 12 questions answered successfully.");
@@ -320,7 +323,7 @@ public class AttachImagesTest extends B2 {
 			
 			wait.until(ExpectedConditions.elementToBeClickable(inspection.getSaveAndSubmitButton())).click();
 			  
-//			  inspection.ClickOn_SaveAndSubmitButton();
+			  inspection.ClickOn_SaveAndSubmitButton();
 			
 			    System.out.println("Checklist Saved Successfully");
 			    

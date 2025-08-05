@@ -1,2 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/main/java/General_Utility/WebDriver_Utility.java=UTF-8
+encoding//src/main/java/POM/Inspection.java=UTF-8
 encoding//src/test/java/Inspection/AttachImagesTest.java=UTF-8
+encoding//src/test/java/Inspection/InspectionTest.java=UTF-8
+encoding//src/test/java/Meter/AddMeterReadingTest.java=UTF-8
+encoding//src/test/java/PAT/AddReading.java=UTF-8
+encoding//src/test/java/Preventive_Maintenance/ArcadePMTest.java=UTF-8
+encoding//src/test/java/TPI/BowlingAsset_TPI.java=UTF-8
+encoding//src/test/java/Tickets/RaiseTicket.java=UTF-8
+encoding//src/test/java/Tickets/StatusChangeTest.java=UTF-8

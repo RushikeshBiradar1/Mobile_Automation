@@ -1,7 +1,13 @@
 
 package POM;
+import java.time.Duration;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -36,6 +42,28 @@ public class Inspection {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Type something...\"]")private WebElement SearchBox_OnSelectUserPerformingDropdown;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Fernandes\"]")private WebElement SelectFernandes_Text;
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ImageView")private WebElement BackButtonIcon;
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.View")private WebElement BackButtonIcon_OnInstant_checklistdetailpage;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Fire Safety Inspection')]")private WebElement Adhoc_FireSafetyInspection;
+	public WebElement getBackButtonIcon_OnInstant_checklistdetailpage() {
+		return BackButtonIcon_OnInstant_checklistdetailpage;
+	}
+	public WebElement getAdhoc_FireSafetyInspection() {
+		return Adhoc_FireSafetyInspection;
+	}
+	public WebElement getBackButtonIcon_OnInstantChecklist_ListingPage() {
+		return BackButtonIcon_OnInstantChecklist_ListingPage;
+	}
+	public WebElement getSearchField_OnInspectionListing_and_onInstantChecklistpage() {
+		return SearchField_OnInspectionListing_and_onInstantChecklistpage;
+	}
+	public WebElement getFire_Safety_Inspection_InstantChecklist() {
+		return Fire_Safety_Inspection_InstantChecklist;
+	}
+	public WebElement getScheculePopup_OnInstantCheclist() {
+		return ScheculePopup_OnInstantCheclist;
+	}
+
+	@AndroidFindBy(xpath = "//android.view.View[contains(@resource-id, 'icon') or contains(@content-desc, 'Icon')]")private WebElement BackButtonIcon_OnInstantChecklist_ListingPage;
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Search\"]")private WebElement SeachField_On_AllTabsOf_Listing;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Add Remark\"]")private WebElement AddRemarkButton_OnActionPopup;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Attach Image(s)\"]")private WebElement AttachImagesButton_OnActionPopup;
@@ -69,6 +97,10 @@ public class Inspection {
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button1\"]")private WebElement PhotoButton_OnAttachImage;
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button2\"]")private WebElement CancelButton_OnAttachImage;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView")private WebElement twelfthActionButton;
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Search\"]")private WebElement SearchField_OnInspectionListing_and_onInstantChecklistpage;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Fire Safety Inspection\"]")private WebElement Fire_Safety_Inspection_InstantChecklist;
+	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup")private WebElement ScheculePopup_OnInstantCheclist;
+	
 	
 	
 	public WebElement getPhotoButton_OnAttachImage() {
@@ -313,6 +345,11 @@ public class Inspection {
 	{
 		SaveAndSubmitButton.click();
 	}
+	public void ClickOn_SaveAndSubmitSameButton(WebDriver driver) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    WebElement button = wait.until(ExpectedConditions.elementToBeClickable(SaveAndSubmitButton));
+	    button.click();
+	}
 	public void ClickOn_SaveButton()
 	{
 		SaveButton.click();
@@ -406,6 +443,38 @@ public class Inspection {
 	public void ClickOn_twelfthActionButton()
 	{
 		twelfthActionButton.click();
+	}
+	public void ClickOn_BackButtonIcon_OnInstant_checklistdetailpage()
+	{
+		BackButtonIcon_OnInstant_checklistdetailpage.click();
+	}
+	public void ClickOn_Adhoc_FireSafetyInspection()
+	{
+		Adhoc_FireSafetyInspection.click();
+	}
+	public void ClickOn_BackButtonIcon_OnInstantChecklist_ListingPage()
+	{
+		BackButtonIcon_OnInstantChecklist_ListingPage.click();
+	}
+	public void ClickOn_SearchField_OnInspectionListing_and_onInstantChecklistpage(String Search_ChecklistName)
+	{
+		SearchField_OnInspectionListing_and_onInstantChecklistpage.sendKeys(Search_ChecklistName);
+	}
+	public void CLickOn_Fire_Safety_Inspection_InstantChecklist()
+	{
+		Fire_Safety_Inspection_InstantChecklist.click();
+	}
+	public void Verify_Schedule_InstantChecklist_Popup()
+	{
+		try {
+		    if (ScheculePopup_OnInstantCheclist.isDisplayed()) {
+		        System.out.println("✅ Popup is displayed.");
+		    } else {
+		        Assert.fail("❌ Popup element found but not displayed.");
+		    }
+		} catch (NoSuchElementException e) {
+		    Assert.fail("❌ Popup not found in DOM. Test failed.");
+		}
 	}
 
 

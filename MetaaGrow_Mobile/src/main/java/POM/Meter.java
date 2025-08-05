@@ -162,7 +162,7 @@ public class Meter {
 
 	    while (true) {
 	        try {
-	            WebElement element = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=\\\"android:id/content\\\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ImageView"));
+	            WebElement element = driver.findElement(By.xpath("//android.view.ViewGroup[9]//android.widget.ImageView"));
 	            if (element.isDisplayed()) {
 //	            	element.click();
 	                break;

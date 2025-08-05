@@ -3,6 +3,7 @@ package TPI;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,6 +12,7 @@ import org.testng.annotations.Test;
 
 import General_Utility.B1;
 import General_Utility.B2;
+import General_Utility.BASETEST;
 import General_Utility.BaseClass;
 import General_Utility.Scroll;
 import POM.Dashboard;
@@ -18,10 +20,140 @@ import POM.PAT;
 import POM.TPI;
 import io.appium.java_client.MobileBy;
 
-public class BowlingAsset_TPI extends B2{
+public class BowlingAsset_TPI extends BASETEST{
+	
+	
+	@Test(priority = 1)
+	public void TC_TPI01_TodaysSearchByTPI()
+	{
+		//wait for the element
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		Scroll sc = new Scroll();
+		
+		// Scroll to the "TPI" section
+		sc.ScrollUsingText(driver, "TPI");
+		
+	   		Dashboard db = new Dashboard(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(db.getTPI())).click();
+				TPI tpi = new TPI(driver);
+				
+				tpi.ClickOn_SearchBox_OnListingPage("Bowling");
+				
+				
+				 // Ensure there is a scrollable view
+			    String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Bowling\"))";
+
+			    // Wait for scroll to complete
+			    wait.until(ExpectedConditions.presenceOfElementLocated(
+			        MobileBy.AndroidUIAutomator(uiScrollable)));
+
+			    // Find and click the element
+			    WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
+			    wait.until(ExpectedConditions.visibilityOf(targetElement));
+//			   
+			    
+			    
+			 // Find the PM Checklist in Completed tab
+				WebElement CompletedTPI = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
+				wait.until(ExpectedConditions.visibilityOf(CompletedTPI));
+
+				// Verify the inspection is displayed in the Completed tab
+				Assert.assertTrue(CompletedTPI.isDisplayed(), "Bowling TPI is not showing in the Todays tab!");
+
+				System.out.println("Bowling TPI is searched properly on todays tab.");
+	}
+	
 	
 	@Test(priority = 2)
-	public void PerformTPI()
+	public void TC_TPI02_SearchUpcomingTPI() throws InterruptedException
+	{
+		//wait for the element
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				Scroll sc = new Scroll();
+				
+				// Scroll to the "TPI" section
+				sc.ScrollUsingText(driver, "TPI");
+				
+			   		Dashboard db = new Dashboard(driver);
+				wait.until(ExpectedConditions.elementToBeClickable(db.getTPI())).click();
+				
+				// Search and select the TPI
+//				db.ClickOn_TPI();
+				TPI tpi = new TPI(driver);
+				tpi.ClickOn_UpcomingTab();
+				
+				tpi.ClickOn_SearchBox_OnListingPage("Bowling");
+				
+				
+				Thread.sleep(1000);  // Consider replacing this with a dynamic wait if needed
+
+				// Define the locator for "Bowling Lane"
+				By resultLocator = By.xpath("//android.widget.TextView[contains(@text, 'Bowling')]");
+
+				try {
+				    // Wait for it to become visible
+				    WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+				    
+				    // Optional: Click on it
+				    result.click();
+
+				    // Verify it's displayed
+				    Assert.assertTrue(result.isDisplayed(), "✅ 'Bowling Lane' is displayed with details.");
+				    System.out.println("✅ 'Bowling Lane' is displayed with details.");
+
+				} catch (TimeoutException e) {
+				    // Fail the test if not found
+				    Assert.fail("❌ 'Bowling Lane' not found on Upcoming Listing results.");
+				}
+				driver.findElement(By.xpath(".//android.widget.ImageView")).click();
+			}
+	
+	@Test(priority = 3)
+	public void TC_TPI03_SearchCompletedTPI() throws InterruptedException
+	{
+		//wait for the element
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				Scroll sc = new Scroll();
+				
+				// Scroll to the "TPI" section
+				sc.ScrollUsingText(driver, "TPI");
+				
+			   		Dashboard db = new Dashboard(driver);
+				wait.until(ExpectedConditions.elementToBeClickable(db.getTPI())).click();
+				
+				// Search and select the TPI
+//				db.ClickOn_TPI();
+				TPI tpi = new TPI(driver);
+			tpi.ClickOn_CompletedTab();
+				
+				tpi.ClickOn_SearchBox_OnListingPage("Bowling");
+				
+				
+				Thread.sleep(1000);  // Consider replacing this with a dynamic wait if needed
+
+				// Define the locator for "Bowling Lane"
+				By resultLocator = By.xpath("//android.widget.TextView[contains(@text, 'Bowling')]");
+
+				try {
+				    // Wait for it to become visible
+				    WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+				    
+				    // Optional: Click on it
+				    result.click();
+
+				    // Verify it's displayed
+				    Assert.assertTrue(result.isDisplayed(), "✅ 'Bowling Lane' is displayed with details.");
+				    System.out.println("✅ 'Bowling Lane' is displayed with details.");
+
+				} catch (TimeoutException e) {
+				    // Fail the test if not found
+				    Assert.fail("❌ 'Bowling Lane' not found on Upcoming Listing results.");
+				}
+				driver.findElement(By.xpath(".//android.widget.ImageView")).click();
+			}
+	
+	@Test(priority = 4)
+	public void TC_TPI04_PerformTPI()
 	{
 		//wait for the element
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -76,8 +208,8 @@ public class BowlingAsset_TPI extends B2{
 				System.out.println("Completed TPI successfully moved to the Finished tab.");
 	}
 	
-	@Test(enabled = false)
-	public void PerformTPIWithImage()
+	@Test(priority = 5)
+	public void TC_TPI05_PerformTPIWithImage() throws Throwable
 	{
 		//wait for the element
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -150,12 +282,15 @@ public class BowlingAsset_TPI extends B2{
 
 					
 				    // Click on the shutter button to take a photo
-				    WebElement shutterButton = driver.findElement(By.id("com.android.camera:id/shutter_button"));
-				    shutterButton.click();
+				    WebElement shutterButton = wait.until(ExpectedConditions.elementToBeClickable(
+				            By.xpath("//android.widget.ImageView[@content-desc=\"Shutter\"]")));
+				            Thread.sleep(1000);
+				            shutterButton.click();
 
 				    // Click the 'Done' button after the photo is taken
-				    WebElement doneButton = driver.findElement(By.id("com.android.camera:id/done_button"));
-				    doneButton.click();
+				            WebElement doneButton = wait.until(ExpectedConditions.elementToBeClickable(
+				                    By.xpath("//android.widget.ImageButton[@content-desc=\"Done\"]")));
+				                    doneButton.click();
 
 				    // Click the photos media popup only once
 				    if (!photosmediapopup) {
@@ -202,47 +337,7 @@ public class BowlingAsset_TPI extends B2{
 				System.out.println("Completed TPI successfully moved to the Finished tab.");
 	}
 	
-	@Test(priority = 1)
-	public void TodaysSearchByTPI()
-	{
-		//wait for the element
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-				Scroll sc = new Scroll();
-				
-				// Scroll to the "TPI" section
-				sc.ScrollUsingText(driver, "TPI");
-				
-			   		Dashboard db = new Dashboard(driver);
-				wait.until(ExpectedConditions.elementToBeClickable(db.getPAT()));
-				
-				// Search and select the TPI
-				db.ClickOn_TPI();
-				TPI tpi = new TPI(driver);
-				
-				tpi.ClickOn_SearchBox_OnListingPage("Bowling");
-				
-				
-				 // Ensure there is a scrollable view
-			    String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Bowling\"))";
-
-			    // Wait for scroll to complete
-			    wait.until(ExpectedConditions.presenceOfElementLocated(
-			        MobileBy.AndroidUIAutomator(uiScrollable)));
-
-			    // Find and click the element
-			    WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
-			    wait.until(ExpectedConditions.visibilityOf(targetElement));
-//			   
-			    
-			    
-			 // Find the PM Checklist in Completed tab
-				WebElement CompletedTPI = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
-				wait.until(ExpectedConditions.visibilityOf(CompletedTPI));
-
-				// Verify the inspection is displayed in the Completed tab
-				Assert.assertTrue(CompletedTPI.isDisplayed(), "Bowling TPI is not showing in the Todays tab!");
-
-				System.out.println("Bowling TPI is searched properly on todays tab.");
-	}
+	
+	
 
 }

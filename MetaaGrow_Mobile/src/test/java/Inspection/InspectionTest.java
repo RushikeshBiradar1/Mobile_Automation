@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,11 +20,53 @@ import General_Utility.WebDriver_Utility;
 import POM.Dashboard;
 import POM.Inspection;
 import POM.Maintenance;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.MobileBy;
 
 public class InspectionTest extends B2{
+	
+	 @Test(priority = 0)
+	public void TC_I09_Inspection_ListingPage_GlobalSearchFunctionality() throws Throwable
+	{
+		  Dashboard db = new Dashboard(driver);
+			// Wait for inspection list to load
+			    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
+
+			 Inspection inspection = new Inspection(driver);
+			
+			 Thread.sleep(1000);
+			    // Perform search for "Food and Beverage"
+//			    inspection.ClickOn_SearchField_OnInspectionListing_and_onInstantChecklistpage("Food and Beverage");
+
+			 // Wait for search box visible
+			    wait.until(ExpectedConditions.visibilityOf(inspection.getSearchField_OnInspectionListing_and_onInstantChecklistpage()));
+
+			    // Click to focus the search box before sending text
+			    WebElement searchBox = (inspection.getSearchField_OnInspectionListing_and_onInstantChecklistpage());
+			    searchBox.click();
+			    searchBox.clear();
+			    searchBox.sendKeys("Food and Beverage");
+
+			    // Optionally hide keyboard (sometimes helps)
+			    try {
+			        driver.hideKeyboard();
+			    } catch (Exception e) {
+			        // Keyboard might already be hidden, ignore
+			    }
+
+			    // Now wait for the search result
+			    By resultLocator = By.xpath("//android.widget.TextView[contains(@text, 'Food and Beverage')]");
+			    try {
+			        wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+			        System.out.println("✅ 'Food and Beverage' is displayed in search results.");
+			    } catch (TimeoutException e) {
+			        Assert.fail("❌ 'Food and Beverage' not found in search results.");
+			    }
+
+	}
 	  @Test(priority = 1)
-	  public void TwoQuestionInspectionTest_TC_I01() throws Throwable
+	  public void TC_I03_Food_and_BeverageTwoQuestionInspectionTest() throws Throwable
 	  {
 		  Dashboard db = new Dashboard(driver);
 		  db.ClickOn_InspectionScheduledTab();
@@ -46,7 +89,7 @@ public class InspectionTest extends B2{
 		        MobileBy.AndroidUIAutomator(uiScrollable)));
 
 		    // Find and click the element
-		    WebElement targetElement = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
+		    WebElement targetElement = driver.findElement(AppiumBy.androidUIAutomator(uiScrollable));
 		    wait.until(ExpectedConditions.visibilityOf(targetElement));
 		    targetElement.click();
 		    
@@ -126,6 +169,13 @@ public class InspectionTest extends B2{
 		    }
 
 		    System.out.println("All questions answered.");
+		    
+		    inspection.ClickOn_SelectUsersPerformingThisTaskDropdownIcon();
+//		   driver.findElement(By.xpath("new UiSelector().textContains(\"Fernandes\")")).click();
+		   driver.findElement(AppiumBy.androidUIAutomator(
+				    "new UiScrollable(new UiSelector().scrollable(true))" +
+				    ".scrollIntoView(new UiSelector().textContains(\"Fernandes\"))")).click();
+		    Thread.sleep(2000);
 		    inspection.ClickOn_SaveAndSubmitButton();
 
 //		    inspection.CLickOn_SaveButtonInspection_OnInspectionChecklist();
@@ -161,7 +211,7 @@ public class InspectionTest extends B2{
 	  
 	  
 	  @Test(priority = 2)
-	  public void TwoQuestionInspectionwithRemarkandUserTest_TC_I02() throws Throwable
+	  public void TC_I02_Opening_ChecklistTwoQuestionInspectionwithRemarkandUserTest() throws Throwable
 	  {
 		  Dashboard db = new Dashboard(driver);
 		// Wait for inspection list to load
@@ -320,7 +370,7 @@ public class InspectionTest extends B2{
 	  }
 	  
 	  @Test(priority = 3)
-	  public void VR_HeadsetInspectionTest_TC_I03()
+	  public void TC_I02_VR_HeadsetInspectionTest()
 	  {
 	  
 		  Dashboard db = new Dashboard(driver);
@@ -455,7 +505,7 @@ public class InspectionTest extends B2{
 	  
 	  
 	  @Test(priority = 4)
-	  public void Daily_Scoreboard_InspectionTest_TC_I04()
+	  public void TC_I04_Daily_Scoreboard_InspectionTest()
 	  {
 	  
 		  Dashboard db = new Dashboard(driver);
@@ -465,8 +515,6 @@ public class InspectionTest extends B2{
   
 		 Inspection inspection = new Inspection(driver);
 
-		// Wait for inspection list to load
-//		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		    // Ensure there is a scrollable view
 		    String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Daily Scoreboard\"))";
@@ -559,6 +607,8 @@ public class InspectionTest extends B2{
 //		   sc.ScrollUsingText(driver, " Save");
 
 //		  inspection.CLickOn_SaveButtonInspection_OnInspectionChecklist();
+		
+		inspection.ClickOn_OverallRemarkField_OnChecklistdetails("Overall Remark added successfully");
 		  
 		  inspection.ClickOn_SaveAndSubmitButton();
 		
@@ -586,4 +636,132 @@ public class InspectionTest extends B2{
 		    System.out.println("Inspection successfully moved to the Completed tab.");
 		    
 	  }
+	  
+	  @Test(priority = 5)
+	  public void TC_I08_SubmitEmptyChecklist_Validation() {
+		    Dashboard db = new Dashboard(driver);
+		    Inspection inspection = new Inspection(driver);
+
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		    try {
+		        // Click on "Inspection Scheduled" tab
+		        WebElement scheduledTab = wait.until(ExpectedConditions.elementToBeClickable(db.getInspectionScheduledTab()));
+		        scheduledTab.click();
+		        System.out.println("Clicked on Inspection Scheduled tab.");
+
+		        // Scroll to the checklist item
+		        String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true))"
+		                            + ".scrollIntoView(new UiSelector().textContains(\"Q3 HVAC Main\"))";
+		        WebElement Q3_HVAC_Inspection = wait.until(ExpectedConditions.presenceOfElementLocated(
+		            MobileBy.AndroidUIAutomator(uiScrollable)));
+		        wait.until(ExpectedConditions.visibilityOf(Q3_HVAC_Inspection));
+		        Q3_HVAC_Inspection.click();
+		        System.out.println("Clicked on 'Q3 HVAC Main' checklist item.");
+
+		        Thread.sleep(6000);
+		        // Click Save & Submit without filling checklist
+		     // After checklist is clicked
+		        WebElement saveSubmitBtn = wait.until(ExpectedConditions.elementToBeClickable(inspection.getSaveAndSubmitButton()));
+		       inspection.ClickOn_SaveAndSubmitButton();
+//		        saveSubmitBtn.click();
+		        System.out.println("Clicked on Save & Submit.");
+
+		      
+
+		        // Wait briefly for popup (if expected to be slow)
+		        Thread.sleep(1000); // Optional: adjust if necessary
+
+		        // Check for popup message
+		        List<WebElement> popupElements = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='android:id/message']"));
+
+		        if (!popupElements.isEmpty() && popupElements.get(0).isDisplayed()) {
+		            System.out.println("Popup is visible: " + popupElements.get(0).getText());
+
+		            // Click OK button using wait to ensure it's interactable
+		            WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button1")));
+		            okButton.click();
+		            System.out.println("OK button clicked.");
+		        } else {
+		            // Fail if popup is not visible
+		            Assert.fail("Popup message did not appear. Failing test.");
+		        }
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        Assert.fail("Exception occurred in test: " + e.getMessage());
+		    }
+		
+	  }
+	  
+	  @Test(priority = 6)
+		public void TC_I10_Instant_Checklist_ListingPage_GlobalSearchFunctionality() throws Throwable
+		{
+			  Dashboard db = new Dashboard(driver);
+				// Wait for inspection list to load
+				    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
+
+				 Inspection inspection = new Inspection(driver);
+				
+			
+				   // click on adhoc checklist plus icon on listing page
+				 inspection.CLickOn_AdhocChecklistPlusIcon();
+				 Thread.sleep(1000);
+				 // Wait for search box visible
+				    wait.until(ExpectedConditions.visibilityOf(inspection.getSearchField_OnInspectionListing_and_onInstantChecklistpage()));
+
+				    // Click to focus the search box before sending text
+				    WebElement searchBox = (inspection.getSearchField_OnInspectionListing_and_onInstantChecklistpage());
+				    searchBox.click();
+				    searchBox.clear();
+				    searchBox.sendKeys("Game Testing");
+
+				    // Optionally hide keyboard (sometimes helps)
+				    try {
+				        driver.hideKeyboard();
+				    } catch (Exception e) {
+				        // Keyboard might already be hidden, ignore
+				    }
+
+				    // Now wait for the search result
+				    By resultLocator = By.xpath("//android.widget.TextView[contains(@text, 'Game Testing')]");
+				    try {
+				        wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+				        System.out.println("✅ 'Game Testing' is displayed in search results.");
+				    } catch (TimeoutException e) {
+				        Assert.fail("❌ 'Gaming Testing' not found in search results.");
+				    }
+
+		}
+	  @Test(priority = 7)
+	  public void TC_I11_VerifyInspection_CountOnDashboard()
+	  {
+
+		  Dashboard db = new Dashboard(driver);
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		    // Click on Inspection Scheduled Tab (if needed)
+		    wait.until(ExpectedConditions.elementToBeClickable(db.getInspectionScheduledTab()));
+
+		    try {
+		        // Locate the sibling count element next to 'Scheduled'
+		        By scheduledCountLocator = By.xpath("//android.widget.TextView[@text='Scheduled']/following-sibling::android.widget.TextView");
+
+		        // Wait for it to be visible
+		        WebElement countElement = wait.until(ExpectedConditions.visibilityOfElementLocated(scheduledCountLocator));
+
+		        // Extract the dynamic text (count)
+		        String countText = countElement.getText();
+		        System.out.println("✅ Scheduled Inspection Count: " + countText);
+
+		        // Basic assertion: the element should be visible and count should be numeric
+		        Assert.assertTrue(countElement.isDisplayed(), "✅ Count element is displayed");
+		        Assert.assertTrue(countText.matches("\\d+"), "✅ Count is a valid number");
+
+		    } catch (TimeoutException e) {
+		        Assert.fail("❌ 'Scheduled' count not found next to label.");
+		    }
+	  }
+	  
 }

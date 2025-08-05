@@ -1,131 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-11T15:17:37 IST" name="Default suite" finished-at="2025-07-11T15:25:37 IST" duration-ms="480405">
+  <suite started-at="2025-08-05T10:52:59 IST" name="Default suite" finished-at="2025-08-05T10:57:39 IST" duration-ms="279586">
     <groups>
     </groups>
-    <test started-at="2025-07-11T15:17:37 IST" name="Default test" finished-at="2025-07-11T15:25:37 IST" duration-ms="480405">
-      <class name="Inspection.AttachImagesTest">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:17:37 IST" name="beforeTest" finished-at="2025-07-11T15:17:37 IST" duration-ms="252" status="PASS">
+    <test started-at="2025-08-05T10:52:59 IST" name="Default test" finished-at="2025-08-05T10:57:39 IST" duration-ms="279586">
+      <class name="Preventive_Maintenance.ArcadePMTest">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:52:59 IST" name="beforeTest" finished-at="2025-08-05T10:53:00 IST" duration-ms="278" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:17:37 IST" name="setUp" finished-at="2025-07-11T15:17:49 IST" duration-ms="12341" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:53:00 IST" name="setUp" finished-at="2025-08-05T10:53:20 IST" duration-ms="20559" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="beforeMethod(org.testng.ITestResult)[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:17:49 IST" name="beforeMethod" finished-at="2025-07-11T15:18:06 IST" duration-ms="16399" status="PASS">
+        <test-method is-config="true" signature="beforeMethod(org.testng.ITestResult)[pri:0, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:53:20 IST" name="beforeMethod" finished-at="2025-08-05T10:53:35 IST" duration-ms="14530" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=AttachImagesTest.Fire_and_Electrical_SixAttachImageTest_TC_I04()[pri:1, instance:Inspection.AttachImagesTest@311bf055] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=ArcadePMTest.TC_PM06_Ride_and_AttractionPMTest()[pri:6, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="Fire_and_Electrical_SixAttachImageTest_TC_I04()[pri:1, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:18:06 IST" name="Fire_and_Electrical_SixAttachImageTest_TC_I04" finished-at="2025-07-11T15:21:43 IST" duration-ms="217260" status="PASS">
+        <test-method signature="TC_PM06_Ride_and_AttractionPMTest()[pri:6, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:53:35 IST" name="TC_PM06_Ride_and_AttractionPMTest" finished-at="2025-08-05T10:57:38 IST" duration-ms="243695" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Fire_and_Electrical_SixAttachImageTest_TC_I04 -->
-        <test-method is-config="true" signature="logTestResult(org.testng.ITestResult)[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:21:43 IST" name="logTestResult" finished-at="2025-07-11T15:23:15 IST" duration-ms="91933" status="PASS">
+        </test-method> <!-- TC_PM06_Ride_and_AttractionPMTest -->
+        <test-method is-config="true" signature="logTestResult(org.testng.ITestResult)[pri:0, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:57:38 IST" name="logTestResult" finished-at="2025-08-05T10:57:39 IST" duration-ms="316" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Fire_and_Electrical_SixAttachImageTest_TC_I04 status=SUCCESS method=AttachImagesTest.Fire_and_Electrical_SixAttachImageTest_TC_I04()[pri:1, instance:Inspection.AttachImagesTest@311bf055] output={null}]]]>
+                <![CDATA[[TestResult name=TC_PM06_Ride_and_AttractionPMTest status=SUCCESS method=ArcadePMTest.TC_PM06_Ride_and_AttractionPMTest()[pri:6, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logTestResult -->
-        <test-method is-config="true" signature="beforeMethod(org.testng.ITestResult)[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:23:15 IST" name="beforeMethod" finished-at="2025-07-11T15:23:33 IST" duration-ms="17669" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=AttachImagesTest.Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02()[pri:2, instance:Inspection.AttachImagesTest@311bf055] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02()[pri:2, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:23:33 IST" name="Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02" finished-at="2025-07-11T15:24:04 IST" duration-ms="31809" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView (tried for 10 second(s) with 500 milliseconds interval)
-Build info: version: '4.10.0', revision: 'c14d967899'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15.1'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:app: C:\Users\SynccIT\app-releas..., appium:appPackage: com.metaagrow, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {app: C:\Users\SynccIT\app-releas..., automationName: UiAutomator2, deviceName: Android, platformName: ANDROID}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 560, appium:deviceScreenSize: 1440x3120, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 3.5, appium:platformVersion: 11, appium:statBarHeight: 84, appium:takesScreenshot: true, appium:viewportRect: {height: 2868, left: 0, top: 84, width: 1440}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 1041b08e-f253-4074-b9e3-2cc8ccf7a8bb]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView (tried for 10 second(s) with 500 milliseconds interval)
-Build info: version: '4.10.0', revision: 'c14d967899'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.15.1'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appium:app: C:\Users\SynccIT\app-releas..., appium:appPackage: com.metaagrow, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {app: C:\Users\SynccIT\app-releas..., automationName: UiAutomator2, deviceName: Android, platformName: ANDROID}, appium:deviceApiLevel: 30, appium:deviceManufacturer: Google, appium:deviceModel: sdk_gphone_x86, appium:deviceName: emulator-5554, appium:deviceScreenDensity: 560, appium:deviceScreenSize: 1440x3120, appium:deviceUDID: emulator-5554, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 3.5, appium:platformVersion: 11, appium:statBarHeight: 84, appium:takesScreenshot: true, appium:viewportRect: {height: 2868, left: 0, top: 84, width: 1440}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 1041b08e-f253-4074-b9e3-2cc8ccf7a8bb
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
-at Inspection.AttachImagesTest.Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02(AttachImagesTest.java:193)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02 -->
-        <test-method is-config="true" signature="logTestResult(org.testng.ITestResult)[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:24:04 IST" name="logTestResult" finished-at="2025-07-11T15:25:37 IST" duration-ms="92265" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02 status=FAILURE method=AttachImagesTest.Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02()[pri:2, instance:Inspection.AttachImagesTest@311bf055] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logTestResult -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:25:37 IST" name="tearDown" finished-at="2025-07-11T15:25:37 IST" duration-ms="384" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:57:39 IST" name="tearDown" finished-at="2025-08-05T10:57:39 IST" duration-ms="122" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:Inspection.AttachImagesTest@311bf055]" started-at="2025-07-11T15:25:37 IST" name="afterTest" finished-at="2025-07-11T15:25:37 IST" duration-ms="16" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:Preventive_Maintenance.ArcadePMTest@5c86dbc5]" started-at="2025-08-05T10:57:39 IST" name="afterTest" finished-at="2025-08-05T10:57:39 IST" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- Inspection.AttachImagesTest -->
+      </class> <!-- Preventive_Maintenance.ArcadePMTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

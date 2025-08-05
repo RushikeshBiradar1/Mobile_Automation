@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Inspection.AttachImagesTest">
+      <class name="Preventive_Maintenance.ArcadePMTest">
         <methods>
           <include name="beforeMethod"/>
-          <include name="logTestResult"/>
           <include name="beforeTest"/>
-          <include name="Daily_Scoreboard_InspectionWithActionPopup_Remark_and_TicketTest_TC_I02"/>
-          <include name="afterTest"/>
+          <include name="logTestResult"/>
           <include name="tearDown"/>
+          <include name="afterTest"/>
           <include name="setUp"/>
+          <include name="TC_PM06_Ride_and_AttractionPMTest"/>
         </methods>
-      </class> <!-- Inspection.AttachImagesTest -->
+      </class> <!-- Preventive_Maintenance.ArcadePMTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

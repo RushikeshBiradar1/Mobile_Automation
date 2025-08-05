@@ -1,8 +1,10 @@
 package Meter;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
@@ -19,6 +21,7 @@ import com.google.common.collect.ImmutableMap;
 
 import General_Utility.B1;
 import General_Utility.B2;
+import General_Utility.BASETEST;
 import General_Utility.BaseClass;
 import General_Utility.Scroll;
 import POM.Dashboard;
@@ -29,10 +32,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class AddMeterReadingTest extends  B2{
+public class AddMeterReadingTest extends  BASETEST{
 	
 	@Test(priority = 1)
-	public void AddReadingTest() throws Throwable
+	public void TC_MTR_01_AddReadingTest() throws Throwable
 	{
 		
 		//wait for the element
@@ -78,7 +81,7 @@ public class AddMeterReadingTest extends  B2{
 	}
 	
 	@Test(priority = 2)
-	public void AddReadingWithImageTest() throws Throwable
+	public void TC_MTR_02_AddReadingWithImageTest() throws Throwable
 	{
 		//wait for the element
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -117,16 +120,21 @@ public class AddMeterReadingTest extends  B2{
 
         try {
             // Wait for the shutter button to be clickable and click on it
-            WebElement shutterButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.android.camera:id/shutter_button")));
-            shutterButton.click();
+        	WebElement shutterButton = wait.until(ExpectedConditions.elementToBeClickable(
+    				By.xpath("//android.widget.ImageView[@content-desc=\"Shutter\"]")));
+    		Thread.sleep(1000);
+    		shutterButton.click();
 //            driver.findElement(By.id("com.android.camera:id/shutter_button")).click();
 //    		driver.findElement(By.id("com.android.camera:id/done_button")).click();
 //    		driver.findElement(By.xpath("//android.widget.TextView[@text=\"Save\"]")).click();
             
             
-            // Wait for the 'OK' button to be clickable and click on it
-            WebElement doneButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.android.camera:id/done_button")));
-            doneButton.click();
+    		// Click the 'Done' button after the photo is taken
+
+    		WebElement doneButton = wait.until(ExpectedConditions.elementToBeClickable(
+    				By.xpath("//android.widget.ImageButton[@content-desc=\"Done\"]")));
+    		doneButton.click();
+    		
         } catch (TimeoutException e) {
             System.out.println("Camera shutter button not found or not clickable within the time limit");
         }
@@ -171,9 +179,89 @@ public class AddMeterReadingTest extends  B2{
 			}
 	}
 	
+	@Test(priority = 3)
+	public void TC_MTR_03_SearchMeterFromList() throws Throwable {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    Scroll sc = new Scroll();
+
+	    // Scroll to the "Meter Readings" section
+	    sc.ScrollUsingText(driver, "Meter Readings");
+
+	    Dashboard db = new Dashboard(driver);
+	    wait.until(ExpectedConditions.elementToBeClickable(db.getMeterScheduled())).click();
+
+	    Meter meter = new Meter(driver);
+
+	    // Dynamic meter name input
+	    String expectedMeterName = "Claw Machine 1 Meter";  // Can be pulled from Excel or properties
+	    meter.CLickOn_SearchMeterNameBox("Claw");
+
+	    // Create dynamic XPath using partial meter name
+	    By resultLocator = By.xpath("//android.widget.TextView[contains(@text,'" + expectedMeterName + "')]");
+
+	    try {
+	        // Wait for and verify the meter name is displayed
+	        WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+
+	        Assert.assertTrue(result.isDisplayed(), "✅ '" + expectedMeterName + "' is displayed.");
+	        System.out.println("✅ '" + expectedMeterName + "' is displayed in the list.");
+
+	       
+
+	    } catch (TimeoutException e) {
+	        // Meter not found
+	        Assert.fail("❌ '" + expectedMeterName + "' was NOT found in the meter list.");
+	    } catch (Exception ex) {
+	        Assert.fail("❌ Unexpected error while verifying meter list: " + ex.getMessage());
+	    }
+
+	    // Try clicking back safely
+	    try {
+	        WebElement backButton = driver.findElement(By.xpath(".//android.widget.ImageView"));
+	        if (backButton.isDisplayed()) {
+	            backButton.click();
+	            System.out.println("⬅️ Navigated back successfully.");
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("ℹ️ Back button not found, skipping back navigation.");
+	    }
+	}
+
+	@Test(priority = 4)
+	public void TC_MTR_04_VerifyReadingDateCalendar() throws Throwable {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    Scroll sc = new Scroll();
+
+	    // Scroll to the "Meter Readings" section
+	    sc.ScrollUsingText(driver, "Meter Readings");
+
+	    Dashboard db = new Dashboard(driver);
+	    wait.until(ExpectedConditions.elementToBeClickable(db.getMeterScheduled()));
+
+	    // Navigate to Scheduled Meter section
+	    db.ClickOn_MeterScheduled();
+
+	    Meter meter = new Meter(driver);
+	    meter.CLickOn_SearchMeterNameBox("Claw");
+	    meter.CLickOn_ClawMachineMeter();
+
+	    // Expected date to verify
+	    String expectedDate = "31 Jul, 2025";
+
+	    // Wait for the element that has the expected date
+	    WebElement readingDate = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	        By.xpath("//android.widget.TextView[@text='" + expectedDate + "']")));
+
+	    // Assert the reading date is displayed
+	    Assert.assertTrue(readingDate.isDisplayed(), "❌ Reading date not displayed or incorrect.");
+
+	    System.out.println("✅ Reading date is correctly displayed as: " + expectedDate);
+	}
 	
-	@Test(enabled = false)
-	public void DeleteLatestReadingTest()
+	
+	
+	@Test(priority = 5)
+	public void TC_MTR_05_DeleteLatestReadingTest()
 	{
 		//wait for the element
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -193,10 +281,28 @@ public class AddMeterReadingTest extends  B2{
 				meter.CLickOn_ClawMachineMeter();
 
 				meter.scrollToElement(driver);
-//				meter.ClickOn_DeleteLatestReading_CrossSign();
-//				driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[6]/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ImageView")).click();
-				driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[8]/android.view.ViewGroup/android.view.ViewGroup[2]")).click();
-				    meter.CLickOn_YesButton_OnDeleteReadingPopup(); // Confirm the deletion
+
+			
+				 // Step 5: Locate and click on the delete (cross) icon
+			    try {
+			        // Use the known (but fragile) XPath for now
+			        By deleteIcon = By.xpath("//android.view.ViewGroup[9]//android.widget.ImageView");
+
+			        WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(deleteIcon));
+			        deleteButton.click();
+			        System.out.println("✅ Clicked on delete icon.");
+
+			        // Step 6: Confirm deletion in popup
+			        meter.CLickOn_YesButton_OnDeleteReadingPopup();
+			        System.out.println("✅ Confirmed deletion of the reading.");
+
+			    } catch (TimeoutException e) {
+			        System.out.println("❌ Delete icon not found or not clickable.");
+			        Assert.fail("Delete icon not found or not clickable.");
+			    } catch (Exception e) {
+			        System.out.println("❌ Unexpected error during deletion: " + e.getMessage());
+			        Assert.fail("Unexpected exception during delete operation.");
+			    }
 				
 	}		
 	
