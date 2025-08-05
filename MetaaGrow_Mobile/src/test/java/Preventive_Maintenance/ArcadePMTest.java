@@ -353,7 +353,7 @@ public class ArcadePMTest extends B2{
 		wait.until(ExpectedConditions.presenceOfElementLocated(
 				MobileBy.AndroidUIAutomator(uiScrollable)));
 
-		// Find the PM Checklist in Completed tab
+		// Find the PM Checklist in Completed tabq
 		WebElement FinishedPM = driver.findElement(MobileBy.androidUIAutomator(uiScrollable));
 		wait.until(ExpectedConditions.visibilityOf(FinishedPM));
 
