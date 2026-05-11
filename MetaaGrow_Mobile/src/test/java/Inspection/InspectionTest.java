@@ -31,8 +31,9 @@ public class InspectionTest extends B2{
 		  Dashboard db = new Dashboard(driver);
 			// Wait for inspection list to load
 			    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
-
+			    wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab()));
+			    Thread.sleep(3000);
+db.ClickOn_InspectionScheduledTab();
 			 Inspection inspection = new Inspection(driver);
 			
 			 Thread.sleep(1000);
@@ -69,7 +70,11 @@ public class InspectionTest extends B2{
 	  public void TC_I03_Food_and_BeverageTwoQuestionInspectionTest() throws Throwable
 	  {
 		  Dashboard db = new Dashboard(driver);
-		  db.ClickOn_InspectionScheduledTab();
+		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab()));
+		    Thread.sleep(3000);
+db.ClickOn_InspectionScheduledTab();
+Thread.sleep(3000);
 //		 driver.findElement(By.xpath("//android.widget.TextView[@text=\"Food and Beverage Inspection-Bowling Lane \"]")).click();
 //		 driver.findElement(By.xpath("//android.widget.TextView[@text=\"A. Facilities\"]")).click();
 //		 driver.findElement(By.xpath(""))
@@ -79,7 +84,7 @@ public class InspectionTest extends B2{
 		 
 		 
 		// Wait for inspection list to load
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		    // Ensure there is a scrollable view
 		    String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Food and Beverage\"))";
@@ -213,11 +218,13 @@ public class InspectionTest extends B2{
 	  @Test(priority = 2)
 	  public void TC_I02_Opening_ChecklistTwoQuestionInspectionwithRemarkandUserTest() throws Throwable
 	  {
-		  Dashboard db = new Dashboard(driver);
-		// Wait for inspection list to load
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
 
+		  Dashboard db = new Dashboard(driver);
+		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab()));
+		    Thread.sleep(3000);
+db.ClickOn_InspectionScheduledTab();
+Thread.sleep(3000);
 //		  db.ClickOn_InspectionScheduledTab();
 
 		  
@@ -370,12 +377,15 @@ public class InspectionTest extends B2{
 	  }
 	  
 	  @Test(priority = 3)
-	  public void TC_I02_VR_HeadsetInspectionTest()
+	  public void TC_I02_VR_HeadsetInspectionTest() throws Throwable
 	  {
-	  
+
 		  Dashboard db = new Dashboard(driver);
 		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
+		    wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab()));
+		    Thread.sleep(3000);
+db.ClickOn_InspectionScheduledTab();
+Thread.sleep(3000);
 //		  db.ClickOn_InspectionScheduledTab();
   
 		 Inspection inspection = new Inspection(driver);
@@ -505,12 +515,16 @@ public class InspectionTest extends B2{
 	  
 	  
 	  @Test(priority = 4)
-	  public void TC_I04_Daily_Scoreboard_InspectionTest()
+	  public void TC_I04_Daily_Scoreboard_InspectionTest() throws Throwable
 	  {
 	  
+
 		  Dashboard db = new Dashboard(driver);
 		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
+		    wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab()));
+		    Thread.sleep(3000);
+db.ClickOn_InspectionScheduledTab();
+Thread.sleep(3000);
 //		  db.ClickOn_InspectionScheduledTab();
   
 		 Inspection inspection = new Inspection(driver);
@@ -697,11 +711,12 @@ public class InspectionTest extends B2{
 	  @Test(priority = 6)
 		public void TC_I10_Instant_Checklist_ListingPage_GlobalSearchFunctionality() throws Throwable
 		{
-			  Dashboard db = new Dashboard(driver);
-				// Wait for inspection list to load
-				    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			        wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab())).click();
-
+		  Dashboard db = new Dashboard(driver);
+		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    wait.until(ExpectedConditions.elementToBeClickable(  db.getInspectionScheduledTab()));
+		    Thread.sleep(3000);
+db.ClickOn_InspectionScheduledTab();
+Thread.sleep(3000);
 				 Inspection inspection = new Inspection(driver);
 				
 			

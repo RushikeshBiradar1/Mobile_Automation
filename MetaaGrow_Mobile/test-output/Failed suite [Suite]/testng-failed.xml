@@ -3,17 +3,18 @@
 <suite name="Failed suite [Failed suite [Suite]]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)(failed)">
     <classes>
-      <class name="Preventive_Maintenance.ArcadePMTest">
+      <class name="Inspection.InspectionTest">
         <methods>
           <include name="beforeMethod"/>
-          <include name="logTestResult"/>
           <include name="beforeTest"/>
-          <include name="TwoQuestionTest_MT_01"/>
+          <include name="logTestResult"/>
+          <include name="TC_I10_Instant_Checklist_ListingPage_GlobalSearchFunctionality"/>
           <include name="afterTest"/>
           <include name="tearDown"/>
+          <include name="TC_I08_SubmitEmptyChecklist_Validation"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- Preventive_Maintenance.ArcadePMTest -->
+      </class> <!-- Inspection.InspectionTest -->
     </classes>
   </test> <!-- Test(failed)(failed) -->
 </suite> <!-- Failed suite [Failed suite [Suite]] -->

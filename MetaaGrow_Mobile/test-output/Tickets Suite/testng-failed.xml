@@ -5,12 +5,15 @@
     <classes>
       <class name="Tickets.RaiseTicket">
         <methods>
-          <include name="login"/>
+          <include name="beforeMethod"/>
           <include name="beforeTest"/>
           <include name="logTestResult"/>
           <include name="RaiseTicketWithMandaoryFields_TKT_01"/>
-          <include name="tearDown"/>
+          <include name="RaiseTicketWithAllFields_TKT_02"/>
+          <include name="SearchRaised_TicketByTKT_No"/>
           <include name="afterTest"/>
+          <include name="tearDown"/>
+          <include name="SearchAssigned_TicketByTKT_No"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- Tickets.RaiseTicket -->

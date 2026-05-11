@@ -71,7 +71,7 @@ public class ArcadePMTest extends B2{
 
 	//////////////////Second Test Case /////////////////
 	@Test(priority = 2)
-	public void TC_PM02_VerifyMaintenance_OverdueCountOnDashboard()
+	public void TC_PM02_VerifyMaintenance_OverdueCountOnDashboard() throws Throwable
 	{
 
 		Dashboard db = new Dashboard(driver);
@@ -81,6 +81,7 @@ public class ArcadePMTest extends B2{
 		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM()));
 
 		try {
+			Thread.sleep(2000);
 			// XPath to the count inside the Overdue subtab — assuming 2nd TextView holds the count
 			By overdueCountLocator = By.xpath(
 					"//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.widget.TextView[2]");
@@ -114,7 +115,10 @@ public class ArcadePMTest extends B2{
 		Maintenance pm = new Maintenance(driver);
 		// Wait for PM list to load
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(  db.getScheduledPM())).click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(  db.getScheduledPM()));
+	    Thread.sleep(3000);
+		db.ClickOn_ScheduledPM();
 
 		Thread.sleep(1000);
 
@@ -155,7 +159,12 @@ public class ArcadePMTest extends B2{
 		Maintenance pm = new Maintenance(driver);
 		// Wait for PM list to load
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(  db.getScheduledPM())).click();
+		wait.until(ExpectedConditions.elementToBeClickable(  db.getScheduledPM()));
+		 Thread.sleep(3000);
+			db.ClickOn_ScheduledPM();
+
+			Thread.sleep(2000);
+
 
 		pm.clickon_AdhocPM_PlusIcon();
 		Thread.sleep(1000);
@@ -198,7 +207,11 @@ public class ArcadePMTest extends B2{
 			Maintenance pm = new Maintenance(driver);
 			// Wait for PM list to load
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.elementToBeClickable(  db.getScheduledPM())).click();
+			wait.until(ExpectedConditions.elementToBeClickable(  db.getScheduledPM()));
+			 Thread.sleep(3000);
+				db.ClickOn_ScheduledPM();
+
+				Thread.sleep(2000);
 
 
 			System.out.println("Clicked on Maintenance Scheduled tab.");
@@ -212,7 +225,7 @@ public class ArcadePMTest extends B2{
 			Arcade_Machines_PM.click();
 			System.out.println("Clicked on 'Arcade_Machines_PM' checklist item.");
 
-			Thread.sleep(6000);
+			Thread.sleep(4000);
 			// Click Save & Submit without filling checklist
 			// After checklist is clicked
 			WebElement saveSubmitBtn = wait.until(ExpectedConditions.elementToBeClickable(pm.getSaveAndSubmitButton()));
@@ -254,7 +267,11 @@ public class ArcadePMTest extends B2{
 
 		// Wait for the page to load
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM())).click();
+		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM()));
+		 Thread.sleep(3000);
+			db.ClickOn_ScheduledPM();
+
+			Thread.sleep(2000);
 
 		// Define the UI Automator scroll command to scroll to a specific element
 		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Ride & Attraction\"))";
@@ -376,7 +393,11 @@ public class ArcadePMTest extends B2{
 
 		// Wait for the page to load
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM())).click();
+		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM()));
+		 Thread.sleep(3000);
+			db.ClickOn_ScheduledPM();
+
+			Thread.sleep(2000);
 
 		// Define the UI Automator scroll command to scroll to a specific element
 		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Super Bike\"))";
@@ -596,7 +617,11 @@ public class ArcadePMTest extends B2{
 		
 		Maintenance pm = new Maintenance(driver);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM())).click();
+wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM()));
+Thread.sleep(3000);
+db.ClickOn_ScheduledPM();
+
+Thread.sleep(2000);
 		// Scroll to target PM checklist
 		String checklistText = "Arcade Machines PM 2";
 		WebElement targetElement = driver.findElement(
@@ -666,7 +691,11 @@ wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM())).click()
 		// Wait for the page to load
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM())).click();
+		wait.until(ExpectedConditions.elementToBeClickable(db.getScheduledPM()));
+		 Thread.sleep(3000);
+			db.ClickOn_ScheduledPM();
+
+			Thread.sleep(2000);
 
 		// Define the UI Automator scroll command to scroll to a specific element
 		String uiScrollable = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"Arcade PM\"))";

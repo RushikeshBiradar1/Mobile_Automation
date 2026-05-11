@@ -3,60 +3,24 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Tickets.AssignTicket">
+      <class name="Preventive_Maintenance.ArcadePMTest">
         <methods>
-          <include name="setUp"/>
-          <include name="beforeTest"/>
-          <include name="AssigTicketWIthAllFiledsAnd3Images_TKT_04"/>
-          <include name="AssignTicketTest_TKT_03"/>
-          <include name="afterTest"/>
-          <include name="tearDown"/>
+          <include name="TC_PM09_TwoQuestionTest"/>
           <include name="beforeMethod"/>
-          <include name="logTestResult"/>
-        </methods>
-      </class> <!-- Tickets.AssignTicket -->
-      <class name="Tickets.RaiseTicket">
-        <methods>
           <include name="beforeTest"/>
+          <include name="TC_PM08_SaveDraftPMTest"/>
+          <include name="TC_PM03_Maintenance_ListingPage_GlobalSearchFunctionality"/>
           <include name="setUp"/>
-          <include name="VerifyTicketDeatils"/>
-          <include name="RaiseTicketWithMandaoryFields_TKT_01"/>
-          <include name="afterTest"/>
-          <include name="RaiseTicketWithAllFields_TKT_02"/>
-          <include name="tearDown"/>
-          <include name="SearchRaised_TicketByTKT_No"/>
-          <include name="SearchAssigned_TicketByTKT_No"/>
-          <include name="beforeMethod"/>
+          <include name="TC_PM06_Ride_and_AttractionPMTest"/>
+          <include name="TC_PM07_SuperBikePMTest"/>
+          <include name="TC_PM10_TwoQuestionWithRemarkAndMultiUserPerformTest"/>
+          <include name="TC_PM04_SearchOn_Ad_hoc_Page"/>
           <include name="logTestResult"/>
-        </methods>
-      </class> <!-- Tickets.RaiseTicket -->
-      <class name="Tickets.Edit_TicketTest">
-        <methods>
-          <include name="beforeTest"/>
-          <include name="setUp"/>
-          <include name="ReplyTicketWithAttachImagesTest_TKT_11"/>
-          <include name="afterTest"/>
-          <include name="Edit_TicketToBreakdownTest_TKT_08"/>
-          <include name="ReplyTicketTest_TKT_10"/>
+          <include name="TC_PM05_SubmitEmptyChecklist_Validation"/>
           <include name="tearDown"/>
-          <include name="beforeMethod"/>
-          <include name="logTestResult"/>
-          <include name="Edit_TicketToGeneralTest_TKT_09"/>
-        </methods>
-      </class> <!-- Tickets.Edit_TicketTest -->
-      <class name="Tickets.StatusChangeTest">
-        <methods>
-          <include name="ParkedStatusTest_TKT_05"/>
-          <include name="setUp"/>
-          <include name="beforeTest"/>
-          <include name="ClosedTicketStatusChangeTest_TKT_06"/>
-          <include name="NotValidTicketStatusChangeTest_TKT_07"/>
           <include name="afterTest"/>
-          <include name="tearDown"/>
-          <include name="beforeMethod"/>
-          <include name="logTestResult"/>
         </methods>
-      </class> <!-- Tickets.StatusChangeTest -->
+      </class> <!-- Preventive_Maintenance.ArcadePMTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

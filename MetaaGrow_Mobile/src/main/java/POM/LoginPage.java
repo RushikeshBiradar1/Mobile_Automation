@@ -11,7 +11,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import General_Utility.WebDriver_Utility;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -25,9 +28,9 @@ public class LoginPage {
 	}
 	
 	//Declaration
-	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Username']") private WebElement Username;
-	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Password']") private WebElement Password;
-	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.View") private WebElement SigninButton;
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"User ID\"]") private WebElement Username;
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"Password\"]") private WebElement Password;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Sign In\"]") private WebElement SigninButton;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.EditText[1]") private WebElement FournPin_1stDigit;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.EditText[2]") private WebElement FournPin_2ndDigit;
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.EditText[3]") private WebElement FournPin_3rdDigit;
@@ -232,9 +235,10 @@ public class LoginPage {
 	            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[@text='Password']")));
 	            passwordField.sendKeys(PassWord);
 
+	            wait.until(ExpectedConditions.elementToBeClickable(SigninButton)).click();
 	            // Wait for the first clickable button and click
-	            WebElement firstButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.View")));
-	            firstButton.click();
+//	            WebElement firstButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.View")));
+//	            firstButton.click();
 
 	            // Wait for the next input fields and input values
 	            WebElement firstInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.EditText[1]")));
@@ -248,6 +252,7 @@ public class LoginPage {
 
 	            WebElement fourthInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.widget.EditText[4]")));
 	            fourthInput.sendKeys(FourthDigitPin);
+	            ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
 
 	            // Wait for the Submit button to be clickable and then click
 	            WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='Submit']")));
@@ -302,5 +307,21 @@ public class LoginPage {
 	        }
 		 
 	
+		 
+	}
+	
+	public void LoginApp(WebDriver driver, String UserName, String PassWord)
+	{
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait for a maximum of 10 seconds
+		  // Wait for the Username field to be visible and then input text
+        WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[@text=\"User ID\"]")));
+        usernameField.sendKeys(UserName);
+
+        // Wait for the Password field to be visible and then input text
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[@text=\"Password\"]")));
+        passwordField.sendKeys(PassWord);
+
+        wait.until(ExpectedConditions.elementToBeClickable(SigninButton)).click();
 	}
 }

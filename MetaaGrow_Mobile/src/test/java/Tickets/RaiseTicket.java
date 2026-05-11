@@ -84,10 +84,7 @@ public class RaiseTicket extends B2{
 		} else {
 		    System.out.println("Test Passed: Ticket with title '" + TicketTitle + "' is displayed in the listing.");
 		}
-		
-		
-		
-		
+	
 	}
 	
 	@Test(priority = 2)

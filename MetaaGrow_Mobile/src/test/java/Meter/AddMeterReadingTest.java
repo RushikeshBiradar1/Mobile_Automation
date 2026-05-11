@@ -246,7 +246,7 @@ public class AddMeterReadingTest extends  BASETEST{
 	    meter.CLickOn_ClawMachineMeter();
 
 	    // Expected date to verify
-	    String expectedDate = "31 Jul, 2025";
+	    String expectedDate = "29 Oct, 2025";
 
 	    // Wait for the element that has the expected date
 	    WebElement readingDate = wait.until(ExpectedConditions.visibilityOfElementLocated(

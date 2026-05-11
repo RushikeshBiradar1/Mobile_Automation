@@ -93,13 +93,14 @@ public class B2 {
 
             String USERNAME = flib.getpropertykeyvalue("user");
             String PASSWORD = flib.getpropertykeyvalue("pass");
-            String Firstpin = flib.getpropertykeyvalue("first");
-            String SecondPin = flib.getpropertykeyvalue("second");
-            String ThirdPin = flib.getpropertykeyvalue("third");
-            String FourthPin = flib.getpropertykeyvalue("fourth");
+//            String Firstpin = flib.getpropertykeyvalue("first");
+//            String SecondPin = flib.getpropertykeyvalue("second");
+//            String ThirdPin = flib.getpropertykeyvalue("third");
+//            String FourthPin = flib.getpropertykeyvalue("fourth");
 
             LoginPage lp = new LoginPage(driver);
-            lp.Login(driver, USERNAME, PASSWORD, Firstpin, SecondPin, ThirdPin, FourthPin);
+            lp.LoginApp(driver, USERNAME, PASSWORD);
+//            lp.Login(driver, USERNAME, PASSWORD, Firstpin, SecondPin, ThirdPin, FourthPin);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Login failed");
@@ -155,7 +156,7 @@ public class B2 {
 
                     // Try to find the element "Hamburger Icon"
                     WebElement hamburgerIcon = wait.until(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[4]/android.view.ViewGroup/android.view.ViewGroup/android.view.View")));
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup/android.view.View")));
 
                     // If either element is found and is visible, proceed with logout actions
                     if (dashboardText.isDisplayed() || hamburgerIcon.isDisplayed()) {

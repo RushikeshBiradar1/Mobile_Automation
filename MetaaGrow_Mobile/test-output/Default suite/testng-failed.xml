@@ -5,13 +5,20 @@
     <classes>
       <class name="Preventive_Maintenance.ArcadePMTest">
         <methods>
+          <include name="TC_PM09_TwoQuestionTest"/>
           <include name="beforeMethod"/>
           <include name="beforeTest"/>
-          <include name="logTestResult"/>
-          <include name="tearDown"/>
-          <include name="afterTest"/>
+          <include name="TC_PM08_SaveDraftPMTest"/>
+          <include name="TC_PM03_Maintenance_ListingPage_GlobalSearchFunctionality"/>
           <include name="setUp"/>
           <include name="TC_PM06_Ride_and_AttractionPMTest"/>
+          <include name="TC_PM07_SuperBikePMTest"/>
+          <include name="TC_PM04_SearchOn_Ad_hoc_Page"/>
+          <include name="TC_PM10_TwoQuestionWithRemarkAndMultiUserPerformTest"/>
+          <include name="logTestResult"/>
+          <include name="TC_PM05_SubmitEmptyChecklist_Validation"/>
+          <include name="afterTest"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- Preventive_Maintenance.ArcadePMTest -->
     </classes>
